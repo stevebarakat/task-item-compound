@@ -1,25 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import { initialTasks } from './initialTasks';
 
-function App() {
+const TaskList = () => {
+  return initialTasks.map(task => {
+    return (
+      <TaskItem>
+        <li>
+          <input type="checkbox" />
+          <span>{task.text}</span>
+          <button>x</button>
+        </li>
+      </TaskItem>
+    );
+  });
+
+};
+
+const TaskItem = ({ children }) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ul>
+      {children}
+    </ul>
   );
-}
+};
+
+const App = () => <TaskList />;
 
 export default App;
