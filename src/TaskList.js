@@ -1,20 +1,47 @@
-import React from 'react'
+import React, { useState } from 'react';
 import TaskItem from './TaskItem';
-import {initialTasks} from './initialTasks';
+import TaskForm from './TaskForm';
+import { initialTasks } from './initialTasks';
 
 const TaskList = () => {
-  return initialTasks.map(task => {
-    console.log(task.text)
-    return (
-      <TaskItem>
-        <li>
-          <input type="checkbox"/>
-          <span>{task.text}</span>
-          <button>x</button>
-        </li>
-      </TaskItem>
-    )
-  })
-}
+  const [value, setValue] = useState('');
+  const [taskList, setTaskList] = useState(initialTasks);
 
-export default TaskList
+  function handleSubmit(e) {
+    e.preventDefault();
+    setTaskList([...taskList,
+    {
+      id: "5y345h3o",
+      text: value,
+      completed: false,
+    }]
+    );
+  }
+
+  console.log(taskList);
+
+  return (
+    <div>
+      <TaskForm>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            onChange={e => setValue(e.target.value)}
+          />
+          <button>+</button>
+        </form>
+      </TaskForm>
+      <TaskItem>
+        {taskList.map(task => (
+          <li key={task.id}>
+            <input type="checkbox" />
+            <span>{task.text}</span>
+            <button>x</button>
+          </li>
+        ))}
+      </TaskItem>
+    </div>
+  );
+};
+
+export default TaskList;

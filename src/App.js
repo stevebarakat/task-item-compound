@@ -1,29 +1,10 @@
 import './App.css';
-import { initialTasks } from './initialTasks';
+import TaskList from './TaskList';
 
-const TaskList = () => {
-  return initialTasks.map(task => {
-    return (
-      <TaskItem>
-        <li>
-          <input type="checkbox" />
-          <span>{task.text}</span>
-          <button>x</button>
-        </li>
-      </TaskItem>
-    );
-  });
-
+const App = () => {
+  return(
+    <TaskList />
+  )
 };
-
-const TaskItem = ({ children }) => {
-  return (
-    <ul>
-      {children}
-    </ul>
-  );
-};
-
-const App = () => <TaskList />;
 
 export default App;
