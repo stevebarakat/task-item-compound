@@ -1,10 +1,8 @@
-import React, { useState } from 'react'
-
 const TaskForm = ({ children }) => {
 
   return (
-      children
-  )
-}
+    children
+  );
+};
 
-export default TaskForm
+export default TaskForm;

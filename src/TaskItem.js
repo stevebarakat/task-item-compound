@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 const TaskItem = ({ children }) => {
   return (
     <ul>
       {children}
     </ul>
-  )
-}
+  );
+};
 
-export default TaskItem
+export default TaskItem;

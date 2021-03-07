@@ -7,7 +7,7 @@ const TaskList = () => {
   const [value, setValue] = useState('');
   const [taskList, setTaskList] = useState(initialTasks);
 
-  function handleSubmit(e) {
+  function addTask(e) {
     e.preventDefault();
     setTaskList([...taskList,
     {
@@ -18,12 +18,16 @@ const TaskList = () => {
     );
   }
 
+  function deleteTask(index) {
+    setTaskList(taskList.filter((_, i) => i !== index));
+  }
+
   console.log(taskList);
 
   return (
     <div>
       <TaskForm>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={addTask}>
           <input
             type="text"
             onChange={e => setValue(e.target.value)}
@@ -32,11 +36,13 @@ const TaskList = () => {
         </form>
       </TaskForm>
       <TaskItem>
-        {taskList.map(task => (
+        {taskList.map((task, i) => (
           <li key={task.id}>
             <input type="checkbox" />
             <span>{task.text}</span>
-            <button>x</button>
+            <button
+              onClick={() => deleteTask(i)}
+            >x</button>
           </li>
         ))}
       </TaskItem>
